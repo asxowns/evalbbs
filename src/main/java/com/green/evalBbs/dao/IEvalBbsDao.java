@@ -10,6 +10,8 @@ import com.green.evalBbs.dto.EvalBbsDto;
 public interface IEvalBbsDao {
 	
 	public List<EvalBbsDto> getList();
+
+	public void write(String title, String content, String writer, String regdate);
 	
 
 }

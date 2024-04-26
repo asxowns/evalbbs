@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.green.evalBbs.dao.IEvalBbsDao;
 
@@ -28,6 +29,20 @@ public class MyController {
 		model.addAttribute("list", dao.getList());
 		
 		return "list";
+	}
+	
+	@GetMapping("/writeForm")
+	public String writeForm() {
+		
+		return "writeForm"; 
+	}
+	
+	@PostMapping("/write")
+	public String write(@RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("writer") String writer, @RequestParam("regdate") String regdate) {
+		
+		dao.write(title, content, writer, regdate);
+		
+		return "redirect:list";
 	}
 
 }
