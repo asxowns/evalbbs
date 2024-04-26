@@ -1,16 +1,33 @@
 package com.green.evalBbs.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.green.evalBbs.dao.IEvalBbsDao;
 
 @Controller
 public class MyController {
 	
+	@Autowired
+	private IEvalBbsDao dao;
+	
 	@RequestMapping("/")
-	public @ResponseBody String root() {
+	public String root() {
 		
-		return "Hello Eval Index";
+		return "index";
+	}
+	
+	
+	@GetMapping("/list")
+	public String list(Model model) {
+		
+		model.addAttribute("list", dao.getList());
+		
+		return "list";
 	}
 
 }
