@@ -44,5 +44,21 @@ public class MyController {
 		
 		return "redirect:list";
 	}
+	
+	@GetMapping("/detail")
+	public String detail(@RequestParam("bno") int bno, Model model) {
+		
+		model.addAttribute("dto", dao.getDto(bno));
+		
+		return "detail";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("bno") int bno) {
+		
+		dao.delete(bno);
+		
+		return "redirect:list";
+	}
 
 }

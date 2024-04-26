@@ -4,10 +4,17 @@
 	<select id="getList" resultType="com.green.evalBbs.dto.EvalBbsDto">
 		SELECT * FROM evalbbs
 	</select>
+	
+	<select id="getDto">
+		select * from evalbbs where bno = #{bno}
+	</select>
 
 	<insert id="write">
 		INSERT INTO evalbbs(title, content, writer, regdate)
 		VALUES(#{param1}, #{param2}, #{param3}, #{param4});
 	</insert>
 
+	<delete id="delete">
+		delete from evalbbs where bno = #{bno}
+	</delete>
 </mapper>

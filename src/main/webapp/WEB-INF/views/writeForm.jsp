@@ -19,6 +19,5 @@
   </form>
 
   <a href="list">목록보기</a><br>
-  <a href="writeForm">글 작성하기</a>
 </body>
 </html>
